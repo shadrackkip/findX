@@ -1,0 +1,32 @@
+.side-link{
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+
+}
+.side-link>span{
+    margin-left: 5px;
+}
+.side-link:hover{
+    background-color: var(--secondaryT);
+    
+    color: var(--primaryC);
+}
+.side-link:hover>.link-icon{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    transition: .5s;
+    
+}
+.is-active{
+    background-color: var(--secondaryT);
+    border-left:3px solid var(--primaryC);
+    color: var(--primaryC);
+    outline:none !important;
+    box-shadow:none !important;
+}

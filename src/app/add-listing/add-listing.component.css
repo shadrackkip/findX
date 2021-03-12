@@ -1,0 +1,19 @@
+.content-area{
+    padding: 15px;
+}
+.box-header{
+    display: flex;
+  
+    align-items: center;
+}
+.box-header>div{
+    margin-left: 5px;
+}
+.box-content{
+    background-color: var(--secondaryT);
+    border-radius: 10px;
+}
+.box-content-header{
+    border-bottom: 1px var(--fontColorT) dotted;
+    
+}

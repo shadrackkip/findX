@@ -1,0 +1,52 @@
+<nav class="navbar main-nav navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink='/'>
+          <img src="/assets/logo.png"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-top " id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link text-white active" aria-current="page" routerLink=''>Home</a>
+          <a class="nav-link text-white" routerLink='/listings'>Listings</a>
+          <a class="nav-link text-white" routerLink='/about-us'>About us</a>
+          <a class="nav-link text-white" routerLink='/contact-us'>Contact us</a>
+          <a style="cursor: pointer;" class="nav-link text-white" data-toggle="modal" data-target="#login">
+            <i style="color: var(--primaryC);" class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Login / Register
+          </a>
+        </div>
+        <div>
+            <button routerLink="/dashboard/add-listing" class="btn btn-primary add-btn">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              &nbsp;Add Listing
+            </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+<!-- Modal -->
+<div class="modal animated animate__zoomIn login-modal " id="login"  data-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div style="border-radius: 0px !important;border:none !important" class="modal-content">
+      <div class="login-header">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="staticBackdropLabel">
+           <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login
+        </h5>
+        <button #closeModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+      <div class="modal-body">
+        <app-login-form></app-login-form>
+      </div>
+     
+    </div>
+  </div>
+</div>

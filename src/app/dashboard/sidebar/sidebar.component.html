@@ -1,0 +1,12 @@
+<div class="sidebar-links">
+    <div *ngFor="let link of links">
+          <div  [routerLink]="['/dashboard/'+link.slug]" routerLinkActive="is-active"  class="side-link">
+            <span [innerHTML]="link.icon" class="link-icon">
+            
+            </span>
+            <span class="link-name">
+                {{link.name}}
+            </span>
+          </div>
+    </div>
+</div>

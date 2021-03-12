@@ -1,0 +1,226 @@
+<div class="listing-details">
+  <div class="listing-details-cover">
+    <div
+      style="border-top: 2px solid var(--primaryC)"
+      class="listing-detils-card p-3 shadow-sm"
+    >
+      <div class="share-btns">
+        <span><i class="fa fa-share" aria-hidden="true"></i></span>
+        <span>
+          <i class="fa fa-heart" aria-hidden="true"></i>
+        </span>
+      </div>
+
+      <div class="card_extra_1">
+        <div>
+          <span class="extra_cycle shadow-lg">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div style="text-transform: uppercase">Restaurant</div>
+      </div>
+      <span class="details-header">Beverly Hills Hotel</span>
+
+      <div style="font-weight: 700; font-size: 14px">
+        <i class="fa rating fa-star" aria-hidden="true"></i>
+        <i class="fa rating fa-star" aria-hidden="true"></i>
+        <i class="fa rating fa-star" aria-hidden="true"></i>
+        <i class="fa rating fa-star" aria-hidden="true"></i>
+        <i class="fa rating fa-star-half" aria-hidden="true"></i>
+        (10)
+      </div>
+      <div class="listing-details-info">
+        <div>
+          <button class="btn primary-btn rounded-btn btn-primary">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            (+254) 724 606 690
+          </button>
+        </div>
+        <div class="listing-time">
+          <div>
+            <i class="fa fa-history fa-2x" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h6>Currently Open</h6>
+            <p class="primary-text">08:00 AM - 10:00 PM</p>
+          </div>
+        </div>
+        <div class="listing-location">
+          <div>
+            <i class="fa fa-2x fa-map-marker" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h6>Location</h6>
+            <p class="primary-text">Nairobi</p>
+          </div>
+        </div>
+      </div>
+      <ngx-gallery
+        class="mb-3"
+        [options]="galleryOptions"
+        [images]="galleryImages"
+        class="ngx-gallery"
+      ></ngx-gallery>
+
+      <br />
+      <br />
+      <h5>
+        <i
+          style="color: var(--primaryC)"
+          class="fa fa-map"
+          aria-hidden="true"
+        ></i>
+        Location's Map
+      </h5>
+      <br />
+      <agm-map [zoom]="" [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+      <br />
+      <br />
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+             style="border-radius: 0px;border-top-left-radius: 20px;border-bottom-left-radius: 20px;"
+            class="nav-link primary-btn  active"
+            id="pills-home-tab "
+            data-toggle="pill"
+            href="#pills-home"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+            >Ad Details</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+          style="border-radius: 0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;"
+            class="nav-link primary-btn "
+            id="pills-profile-tab"
+            data-toggle="pill"
+            href="#pills-profile"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+            >Reviews (0)</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="pills-home"
+          role="tabpanel"
+          aria-labelledby="pills-home-tab"
+        >
+          <div class="ad_details_header">
+            <div>
+              <h5>
+                <i
+                  style="color: var(--primaryC)"
+                  class="fa fa-map-marker"
+                  aria-hidden="true"
+                ></i
+                >&nbsp;Location : <a href="">Ruaka , Nairobi</a>
+              </h5>
+            </div>
+            <div>
+              <h5>
+                <i
+                  style="color: var(--primaryC)"
+                  class="fa fa-credit-card"
+                  aria-hidden="true"
+                ></i
+                >&nbsp;Starting from KES 12,000
+              </h5>
+            </div>
+          </div>
+          <hr />
+          <div>
+            <h5>
+              <i
+                style="color: var(--primaryC)"
+                class="fa fa-edit"
+                aria-hidden="true"
+              ></i
+              >&nbsp;Description
+            </h5>
+          </div>
+          <div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore,
+            aspernatur dicta! Suscipit distinctio, quia consectetur tenetur
+            nobis, in obcaecati, dolores veritatis repellendus tempore
+            laudantium nostrum. Dolor enim doloribus sequi. Repellendus?
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aut quas voluptatum! Obcaecati doloribus ab delectus unde eius minus rerum dignissimos? Provident quidem animi adipisci, repudiandae neque enim praesentium dolorem?
+            </p>
+          </div>
+          <br />
+          <div>
+            <h5>
+              <i
+                style="color: var(--primaryC)"
+                class="fa fa-bookmark"
+                aria-hidden="true"
+              ></i
+              >&nbsp;Tags
+            </h5>
+          </div>
+          <div>
+              <span class="badge badge-warning">Toyota</span>&nbsp;
+              <span class="badge badge-warning">Isis</span>
+          </div>
+          <br/>
+          <div>
+            <h5>
+              <i
+                style="color: var(--primaryC)"
+                class="fa fa-phone-square"
+                aria-hidden="true"
+              ></i
+              >&nbsp;Contact Details
+            </h5>
+          </div>
+          <div class="contact_details">
+              <div class="contact_detail">
+                  <div>
+                      <i class="fa fa-address-book" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                      (+254) 724 606 690
+                  </div>
+              </div>
+          
+              <div class="contact_detail">
+                <div>
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <a href="">www.kopalink.co.ke</a>
+                </div>
+            </div>
+            <div class="contact_detail">
+                <div>
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <a class="btn rounded-btn primary-btn" href="">Send Message</a>
+                </div>
+            </div>
+            <hr/>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-profile"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+        >
+          ...
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+  </div>
+</div>

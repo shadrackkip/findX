@@ -1,0 +1,52 @@
+.main-banner{
+    height: 450px;
+    background-image: url('/assets/banner.jpg');
+    background-size: cover;
+}
+.hero-area{
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-text{
+    font-weight: 600 !important;
+    font-size: 57 !important;
+}
+.hero-text-p{
+    color:var(--fontColorT);
+}
+.search-box{
+    background-color: var(--primaryT);
+    height: 70px;
+    border-radius: 50px;
+    width: 100%;
+    box-shadow: 5px 5px var(--primaryC);
+    display: flex;
+    align-items: center;
+}
+.box-1{
+    padding: 3px;
+    width: 10%;
+}
+.box-2,.box-3,.box-4,.box-5{
+    padding: 5px;
+    width: 22.5%;
+}
+.box-3,.box-4{
+    border-left: 2px solid var(--primaryC);
+    height: 100%;
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+}
+.btn-srch{
+    background-color: var(--primaryC) !important;
+    border-color: var(--primaryC) !important;
+    width: 200px;
+    border-radius: 30px;
+    padding: 10px;
+}
+.frm-input{
+    border: none;
+}

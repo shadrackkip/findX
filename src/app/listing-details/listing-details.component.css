@@ -1,0 +1,97 @@
+.listing-details-cover {
+  height: 350px;
+  background-image: url("/assets/banner.jpg");
+  background-size: cover;
+}
+.listing-detils-card {
+  height: 100vh;
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  right: 15%;
+  top: 200px;
+  background-color: var(--primaryT);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 5px 5px var(--primaryC);
+}
+.details-header{
+    font-size: 30px;
+    font-weight: 600;
+}
+.card_extra_1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.extra_cycle{
+    padding: 5px;
+    font-size: 13px;
+    width: 100px;
+    border-radius: 50%;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+   background-color: var(--primaryC);
+}
+.rating{
+    color: var(--tertiaryC);
+}
+.listing-details-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.listing-details-info>div{
+    margin-left: 10px;
+}
+.listing-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listing-time>div{
+    margin-left: 10px;
+}
+.listing-location{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.listing-location>div{
+    margin-left: 10px;
+}
+.share-btns{
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    display: flex;
+
+}
+.share-btns>span{
+    margin-left: 10px;
+    cursor: pointer;
+}
+agm-map {
+    height: 300px;
+    margin-top: 45px;
+  }
+  .ad_details_header{
+      display: flex;
+      justify-content: space-between;
+  }
+  .contact_details{
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+
+      
+  }
+  .contact_detail{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: solid 1px #000;
+  }
+  .contact_detail>div{
+      margin-left: 10px;
+  }

@@ -1,0 +1,309 @@
+<div class="content-area">
+  <div class="box">
+    <div class="box-header">
+      <div>
+        <h4>Add Listing</h4>
+      </div>
+      <div>
+        <a class="text-muted" routerLink="">Home ></a>
+        <a class="text-muted" routerLink="">Dashboard ></a>
+        <a class="text-muted" routerLink="">Add Listing</a>
+      </div>
+    </div>
+
+    <div class="box-content mt-3 shadow-sm">
+      <div class="box-ad-details p-3">
+        <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+          <ng-wizard-step
+            [title]="'  Ad Details'"
+            [canEnter]="isValidTypeBoolean"
+            [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+          >
+            <div class="form-group">
+              <label for="">
+                <i class="fa fa-briefcase primary-text" aria-hidden="true"></i>
+                Listing title</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="Name your business"
+              />
+              <small id="helpId" class="form-text text-muted"
+                >A great title needs at least 60 characters</small
+              >
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="">
+                    <i
+                      class="fa fa-list-ul primary-text"
+                      aria-hidden="true"
+                    ></i>
+                    Category
+                  </label>
+                  <select class="form-control" name="" id="">
+                    <option>Select Category</option>
+                    <option></option>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="">
+                    <i class="fa fa-tags primary-text" aria-hidden="true"></i
+                    >Tags
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder="Maximum 15, should be comma separated"
+                  />
+                  <small id="helpId" class="form-text text-muted"
+                    >Enter the tags separated by commas</small
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="">
+                <i
+                  class="fa fa-pencil-square primary-text"
+                  aria-hidden="true"
+                ></i>
+                Description</label
+              >
+              <ckeditor [editor]="Editor" data=""></ckeditor>
+
+              <small class="text-muted help-txt"
+                >Describe what makes your ad unique</small
+              >
+            </div>
+
+            <div class="box-content mt-3 shadow-sm">
+              <div class="box-content-header p-3">
+                <h4>Location</h4>
+              </div>
+              <div class="box-ad-details p-3">
+                <div class="form-group">
+                  <label for="">
+                    <i
+                      class="fa fa-map-marker primary-text"
+                      aria-hidden="true"
+                    ></i>
+                    Location</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder="Enter your business location"
+                  />
+                  <small id="helpId" class="form-text text-muted"
+                    >Enter location, select from suggestions</small
+                  >
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="">
+                        <i
+                          class="fa fa-sliders primary-text"
+                          aria-hidden="true"
+                        ></i>
+                        Address
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name=""
+                        id=""
+                        aria-describedby="helpId"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="">
+                        <i
+                          class="fa fa-filter primary-text"
+                          aria-hidden="true"
+                        ></i
+                        >Zip code
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name=""
+                        id=""
+                        aria-describedby="helpId"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-content mt-3 shadow-sm">
+              <div class="box-content-header p-3">
+                <h4>Pricing</h4>
+              </div>
+              <div class="box-ad-details p-3">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">KES</span>
+                  </div>
+                  <input
+                    placeholder="Enter price"
+                    type="text"
+                    class="form-control"
+                    aria-label="Amount "
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name=""
+                            id=""
+                            value="checkedValue"
+                          />
+                          Negotiable
+                        </label>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-wizard-step>
+
+          <ng-wizard-step [title]="'Photos'">
+            <br />
+            <br />
+            <h6 class="primary-text">
+              <i class="fa fa-picture-o" aria-hidden="true"></i> Upload Photos
+            </h6>
+            <ngx-dropzone (change)="onSelect($event)">
+              <ngx-dropzone-label
+                >Drop files here (accepsted
+                files:png,jpg,jpeg)!</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of files"
+                [removable]="true"
+                (removed)="onRemove(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </ng-wizard-step>
+          <ng-wizard-step [title]="'Payments'">
+              <h6>Pricing</h6>
+              <p>
+                The premium package help sellers to promote their products or services by giving more visibility to their ads to attract more buyers and sell faster.
+              </p>
+              <div    *ngIf="showPackages;else paymentForm">
+                <div class="row mt-5">
+                  <div class="col-lg-6">
+                      <div class="card text-center">
+                          <div class="card-header">Free</div>
+                          <div class="card-body">
+                            <h5 class="card-title">KES 0/ad</h5>
+                            <ul class="list-group">
+                              <li class="list-group-item">Ads stays online for 30 days</li>
+                              <li class="list-group-item">
+                                  Up to 10 images allowed
+                              </li>
+                             
+                            </ul>
+                          
+                          </div>
+                          <div class="card-footer text-muted">
+                              <button (click)="select_package('free')" class="btn btn-primary text-white">Select Package <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+                              </div>
+                        </div>
+                  </div>
+  
+                  <div class="col-lg-6">
+                      <div class="card text-center">
+                          <div style="background-color: var(--primaryC);" class="card-header">Premium</div>
+                          <div class="card-body">
+                            <h5 class="card-title">KES 850/ad</h5>
+                            <ul class="list-group">
+                              <li class="list-group-item">Ads stays online for 60 days</li>
+                              <li class="list-group-item">
+                                  30 days of promotion
+                              </li>
+                              <li class="list-group-item">
+                                  Up to 15 images allowed
+                              </li>
+                              <li class="list-group-item">
+                                  Featured on the homepage
+                              </li>
+                              <li class="list-group-item">
+                                  Featured in the category
+                              </li>
+                              <li class="list-group-item">
+                                  Keep online for 60 days
+                              </li>
+                            </ul>
+                          
+                          </div>
+                          <div class="card-footer text-muted">
+                              <button (click)="select_package('free')" class="btn btn-primary text-white">Select Package <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+                          </div>
+                        </div>
+                  </div>
+  
+              </div>
+              </div>
+
+              <div #paymentForm>
+                <div class="card" >
+                  <div class="card-body">
+                    <h5 class="card-title">Pay With M-Pesa</h5>
+ 
+                      <form>
+                        <div class="form-group">
+                          <label for="">Transaction code</label>
+                          <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                          <small id="helpId" class="text-muted">Enter m-pesa transaction code </small>
+                        </div>
+                      </form>
+                      
+                    <button (click)="hide_payment_form()" href="#" class="btn btn-primary">Submit </button>
+                  </div>
+                </div>
+              </div>
+
+              
+         
+          </ng-wizard-step>
+          <ng-wizard-step [title]="'Finish'">
+            <span>Submit</span>
+          </ng-wizard-step>
+        </ng-wizard>
+      </div>
+    </div>
+  </div>
+</div>

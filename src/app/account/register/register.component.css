@@ -1,0 +1,9 @@
+.app-banner-height-register{
+    height: 70px;
+    background-image: url("/assets/banner.jpg");
+    background-size: cover;
+}
+.reg-card{
+    box-shadow: 5px 5px var(--primaryC) !important;
+    border:none !important;
+}

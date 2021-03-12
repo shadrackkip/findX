@@ -1,0 +1,39 @@
+<form>
+    <div class="form-group">
+        <label>Login (Email Address)</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button style="border-radius: 0px !important;" class="btn btn-secondary" type="button" aria-label="">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                </button>
+          </span>
+            <input style="border-radius: 0px !important;" type="email" class="form-control" name="email" id="name" placeholder="" aria-label="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button style="border-radius: 0px !important;" class="btn btn-secondary" type="button" aria-label="">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </button>
+          </span>
+            <input style="border-radius: 0px !important;" type="password" class="form-control" name="name" id="password" placeholder="" aria-label="">
+        </div>
+    </div>
+    <div class="form-group">
+        <button (click)="login()" type="button" class="btn btn-block primary-btn rounded-btn btn-primary">Sign In</button>
+    </div>
+    <div class="form-group login-extras ">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Keep me logged in
+          </label>
+        </div>
+        <div class="form-check ">
+           
+           <a (click)="closeModal()" class="text-muted" style="text-decoration: none;cursor: pointer;">Register</a> <a style="text-decoration: none;cursor: pointer;" (click)="goToForgetPassword()" class="text-muted" > / forgot password</a>
+          </div>
+      </div>
+</form>

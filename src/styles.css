@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ng-wizard/themes/ng_wizard.min.css';
+@import '~ng-wizard/themes/ng_wizard_theme_arrows.min.css';
+
+:root{
+    --primaryC:#30eded;
+    --primaryT:#fff;
+    --tertiaryC:#f8cd2e;
+    --secondaryC:#221638;
+    --secondaryT:#fafafa;
+    --backgroundColor:#e8e8e8;
+    --fontColorT:#bfc4c8;
+
+
+}
+body{
+    font-family: 'Rubik', sans-serif;
+}
+a{
+    text-decoration: none !important;
+    color: var(--primaryC) !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none !important;
+    box-shadow:none !important;
+}
+.form-control:focus, .form-control:active:focus, .form-control.active:focus{
+    outline:none !important;
+    box-shadow:none !important;
+}
+.primary-btn{
+    background-color: var(--primaryC)  !important;
+    border-color:var(--primaryC)  !important;
+} 
+.rounded-btn{
+    border-radius: 20px !important;
+}
+.primary-text{
+    color: var(--primaryC)  !important;
+}
+.app-banner-height{
+    height: 350px;
+    background-image: url("/assets/banner.jpg");
+    background-size: cover;
+}
+.app-banner-height-register{
+    height: 70px;
+    background-image: url("/assets/banner.jpg");
+    background-size: cover;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

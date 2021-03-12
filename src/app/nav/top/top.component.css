@@ -1,0 +1,35 @@
+.main-nav{
+    background-color: rgba(0, 0, 0, .5) !important;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    border-bottom: 0px !important;
+    z-index: 999;
+   
+}
+.nav-top{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.add-btn{
+    background-color: transparent !important;
+    border-radius: 40px;
+    width: 150px;
+    border-color: var(--primaryC) !important;
+    color: var(--primaryC) !important;
+}
+.add-btn:hover{
+    background-color: var(--primaryC) !important;
+    animation: ease-in 5;
+    color: var(--primaryT) !important;
+}
+.login-header{
+    background-color: var(--primaryC) !important;  
+}
+.with-bg{
+    background-color: var(--secondaryC) !important;
+    animation: 3s ease-in;
+
+}

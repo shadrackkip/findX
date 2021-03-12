@@ -1,0 +1,16 @@
+.dashboard{
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--backgroundColor);
+    height: auto;
+}
+.side-menu{
+    width: 20%;
+    position: fixed;
+    height: 100vh;
+    background-color: var(--primaryT);
+}
+.dash-content{
+    margin-left: 20%;
+    width: 80%;
+}

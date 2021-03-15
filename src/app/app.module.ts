@@ -26,12 +26,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
 
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HttpClientModule } from '@angular/common/http';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
 const ngWizardConfig: NgWizardConfig = {
@@ -62,15 +62,17 @@ const ngWizardConfig: NgWizardConfig = {
     BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
-  
+
     NgxGalleryModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDSFTA05QFqjqJoX3lJzqqs7R2QV901qO4',
     }),
+    GooglePlaceModule,
     CKEditorModule,
     NgWizardModule.forRoot(ngWizardConfig),
     NgxDropzoneModule,
-    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

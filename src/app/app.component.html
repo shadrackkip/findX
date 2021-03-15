@@ -1,3 +1,9 @@
 <app-top></app-top>
+<div  style="z-index: 99999 !important;position: fixed;width: 100%;" class="alert  notification-alert alert-{{statusClass}} alert-dismissible fade show" role="alert">
 
+
+  <div class="d-flex justify-content-center">
+  {{message}}
+</div>
+</div>
 <router-outlet></router-outlet>

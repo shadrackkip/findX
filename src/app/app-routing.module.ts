@@ -8,12 +8,17 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListingComponent } from './listing/listing.component';
 
 const routes: Routes = [
  {
    path:'',
    component:HomeComponent
  },
+{
+  path:'listings',
+  component:ListingComponent
+},
 
  {
   path:'listing/:slug',

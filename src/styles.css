@@ -31,7 +31,7 @@ a{
 .primary-btn{
     background-color: var(--primaryC)  !important;
     border-color:var(--primaryC)  !important;
-} 
+}
 .rounded-btn{
     border-radius: 20px !important;
 }
@@ -49,5 +49,7 @@ a{
     background-size: cover;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.field-has-error{
+  border-color: crimson !important;
+}

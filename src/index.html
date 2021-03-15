@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FindX</title>
+  <title>  Home | FindX</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -10,8 +10,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .app-spinner-spinning{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+    }
+    .app-spinner{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSFTA05QFqjqJoX3lJzqqs7R2QV901qO4&libraries=places&language=en"></script>
+
 </head>
-<body class="mat-typography">
+<body id="app" >
+  <div class="app-spinner">
+    <i class="fa fa-spinner fa-2x fa-spin" aria-hidden="true"></i>
+  </div>
   <app-root></app-root>
 </body>
 </html>

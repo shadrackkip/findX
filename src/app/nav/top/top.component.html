@@ -12,8 +12,13 @@
           <a class="nav-link text-white" routerLink='/listings'>Listings</a>
           <a class="nav-link text-white" routerLink='/about-us'>About us</a>
           <a class="nav-link text-white" routerLink='/contact-us'>Contact us</a>
-          <a style="cursor: pointer;" class="nav-link text-white" data-toggle="modal" data-target="#login">
+
+
+          <a *ngIf="!loggedIn" style="cursor: pointer;" class="nav-link text-white" data-toggle="modal" data-target="#login">
             <i style="color: var(--primaryC);" class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Login / Register
+          </a>
+          <a *ngIf="loggedIn" class="nav-link text-white" routerLink='/dashboard/profile'>
+          <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{user?.data.name}}
           </a>
         </div>
         <div>
@@ -25,12 +30,13 @@
       </div>
     </div>
   </nav>
-  
+
+
 
 
 
 <!-- Modal -->
-<div class="modal animated animate__zoomIn login-modal " id="login"  data-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal animate__animated  animate__zoomIn login-modal " id="login"  data-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div style="border-radius: 0px !important;border:none !important" class="modal-content">
       <div class="login-header">
@@ -46,7 +52,7 @@
       <div class="modal-body">
         <app-login-form></app-login-form>
       </div>
-     
+
     </div>
   </div>
 </div>

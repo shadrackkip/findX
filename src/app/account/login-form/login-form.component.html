@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="loginForm">
     <div class="form-group">
         <label>Login (Email Address)</label>
         <div class="input-group">
@@ -7,8 +7,17 @@
                     <i class="fa fa-user-o" aria-hidden="true"></i>
                 </button>
           </span>
-            <input style="border-radius: 0px !important;" type="email" class="form-control" name="email" id="name" placeholder="" aria-label="">
+            <input formControlName="email" style="border-radius: 0px !important;" type="email" class="form-control" name="email" id="email" placeholder="" aria-label="">
+
+
         </div>
+
+        <p *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required" class="form-text text-danger">
+          This field is required
+        </p>
+        <p *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.email" class="form-text text-danger">
+          A valid email is reqired
+        </p>
     </div>
     <div class="form-group">
         <label>Password</label>
@@ -18,8 +27,12 @@
                     <i class="fa fa-key" aria-hidden="true"></i>
                 </button>
           </span>
-            <input style="border-radius: 0px !important;" type="password" class="form-control" name="name" id="password" placeholder="" aria-label="">
+            <input formControlName="password" style="border-radius: 0px !important;" type="password" class="form-control" name="name" id="password" placeholder="" aria-label="">
         </div>
+        <p *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required" class="form-text text-danger">
+          Password  field is required
+        </p>
+
     </div>
     <div class="form-group">
         <button (click)="login()" type="button" class="btn btn-block primary-btn rounded-btn btn-primary">Sign In</button>
@@ -32,7 +45,7 @@
           </label>
         </div>
         <div class="form-check ">
-           
+
            <a (click)="closeModal()" class="text-muted" style="text-decoration: none;cursor: pointer;">Register</a> <a style="text-decoration: none;cursor: pointer;" (click)="goToForgetPassword()" class="text-muted" > / forgot password</a>
           </div>
       </div>

@@ -498,7 +498,7 @@
                 </div>
               </div>
 
-              <div style="display: none">
+              <div *ngIf="!showPackages">
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">Pay With M-Pesa</h5>
@@ -528,13 +528,24 @@
                       Submit
                     </button>
                   </div>
+
                 </div>
 
 
               </div>
+              <button (click)="showNextStep($event)" class="btn mb-3 primary-btn rounded-btn pull-right">Next <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </button>
+              <br/>
+              <br/>
+              <br/>
             </ng-wizard-step>
             <ng-wizard-step [title]="'Finish'">
-              <span>Submit</span>
+              <h3>Finish Publishing</h3>
+              <hr/>
+              <div class="text-center">
+
+              <button (click)="save_data()" class="btn btn-lg rounded-btn primary-btn">Finish Publishing</button>
+
+              </div>
             </ng-wizard-step>
           </ng-wizard>
         </div>

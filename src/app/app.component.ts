@@ -50,7 +50,7 @@ export class AppComponent implements AfterViewInit {
         setTimeout(() => {
           el.style.display = 'none';
           this.showNotification = false;
-        }, 2500);
+        }, 9500);
       } else {
         this.showNotification = false;
       }

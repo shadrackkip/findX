@@ -15,6 +15,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { of } from 'rxjs';
 import { Listing } from '../models/listing.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-listing',
@@ -30,6 +31,7 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   isSaving:boolean=false;
   section:number=1;
   prod_name:string;
+  subscription:string;
   bizAddress = {
     name: '',
     url: '',
@@ -63,7 +65,8 @@ export class AddListingComponent implements OnInit, AfterViewInit {
     private ngWizardService: NgWizardService,
     private fb: FormBuilder,
     private listingService: ListingService,
-    private appService: AppStateService
+    private appService: AppStateService,
+    private router:Router
   ) {}
 
   listingForm = this.fb.group({
@@ -116,11 +119,60 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   };
 
   select_package = (type) => {
-    this.showPackages = false;
+    if(type!=='free'){
+      this.showPackages = false;
+
+    }
+
+    this.subscription=type;
+
   };
   hide_payment_form = () => {
     this.showPackages = true;
   };
+
+
+  save_data = () =>{
+    if(this.subscription==null){
+      console.log(this.subscription)
+      let notifyData = {
+        show: true,
+        statusClass: 'danger',
+        message: 'You have not selected your subscription package   😲 ',
+      };
+
+      this.appService.appStatusNotification(notifyData);
+      return false
+
+    }
+    this.appService.setAppIsLoading({ isLoading: true });
+    this.step1().subscribe((resp:Listing) => {
+
+      localStorage.setItem('product_draft',JSON.stringify(resp.data))
+
+
+      this.step2().subscribe((resp)=>{
+        console.log(resp);
+        let notifyData = {
+          show: true,
+          statusClass: 'success',
+          message: 'Ad successfully published ✔',
+        };
+        this.appService.setAppIsLoading({ isLoading: false });
+        this.appService.appStatusNotification(notifyData);
+
+        this.files=[]
+        this.isSaving=false;
+
+
+          this.router.navigateByUrl('/dashboard/my-listing')
+
+      })
+    });
+
+
+
+  }
 
   //dropzone
   onSelect(event) {
@@ -163,45 +215,34 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   isValidFunctionReturnsBoolean(args: StepValidationArgs) {
     console.log(args);
 
-    if (this.listingForm.valid && args.fromStep.title==='Ad Details') {
+    if (this.listingForm.invalid && args.fromStep.title==='Ad Details') {
       let notifyData = {
         show: true,
-        statusClass: 'info',
-        message: 'Saving...🙂',
+        statusClass: 'danger',
+        message: 'Make sure you have entered correct and required information   😲 ',
       };
+
       this.appService.appStatusNotification(notifyData);
-      this.step1().subscribe((resp:Listing) => {
-        console.log(resp);
 
-        let notifyData = {
-          show: true,
-          statusClass: 'success',
-          message:`${resp.message} ✔`,
-        };
-        localStorage.setItem('product_draft',JSON.stringify(resp.data))
-        this.prod_name=resp.data.title
-        this.appService.appStatusNotification(notifyData);
-        this.isSaving=false;
-      });
+      return false;
+    }
+    this.prod_name=this.listingForm.value.title
+    if(args.fromStep.title==='Photos' && this.files.length<=0 && args.direction!=='backward'){
 
-      return true;
+      let notifyData = {
+        show: true,
+        statusClass: 'danger',
+        message: 'Please upload photos   😲 ',
+      };
+
+      this.appService.appStatusNotification(notifyData);
+      return false
+
     }
 
-    if(args.fromStep.title==='Photos' && this.files.length>0){
 
-      this.step2().subscribe((resp)=>{
-        console.log(resp);
-        let notifyData = {
-          show: true,
-          statusClass: 'success',
-          message: 'Images uploaded ✔',
-        };
-        this.appService.appStatusNotification(notifyData);
-        this.isSaving=false;
-        return true
-      })
 
-    }
+    return true;
     //store step2 data
   }
   step1 = () => {
@@ -219,12 +260,6 @@ export class AddListingComponent implements OnInit, AfterViewInit {
       formData.append('images[]',file)
     })
     formData.append('product',localStorage.getItem('product_draft'))
-    let notifyData = {
-      show: true,
-      statusClass: 'info',
-      message: 'Images are being uploaded please wait...🙂',
-    };
-    this.appService.appStatusNotification(notifyData);
     return this.listingService.addPhotos(formData)
   }
 

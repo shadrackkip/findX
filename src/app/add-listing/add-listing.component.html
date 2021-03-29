@@ -283,6 +283,94 @@
                   </span>
                 </div>
 
+
+              </div>
+
+              <div class="box-content mt-3 shadow-sm">
+                <div class="box-content-header p-3">
+                  <h4>User Information</h4>
+                </div>
+                <div class="box-ad-details p-3">
+                  <div class="form-group">
+                    <label for="names">
+                      <i class="fa fa-user-circle primary-text" aria-hidden="true"></i>
+                      Names <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name=""
+                      formControlName="names"
+                      id="names"
+                      aria-describedby="helpId"
+                      placeholder="Enter your full name"
+                    />
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        (listingForm.controls.names.touched || submitted) &&
+                        listingForm.controls.names.errors?.required
+                      "
+                    >
+                      This field is required
+                    </span>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="email">
+                          <i class="fa fa-inbox primary-text" aria-hidden="true"></i>
+                          Email address <span class="text-danger">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          name=""
+                          formControlName="email"
+                          id="email"
+                          aria-describedby="helpId"
+                          placeholder=""
+                        />
+                      </div>
+                      <span
+                        class="text-danger"
+                        *ngIf="
+                          (listingForm.controls.email.touched || submitted) &&
+                          listingForm.controls.email.errors?.required
+                        "
+                      >
+                        This field is required
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="phone">
+                          <i class="fa fa-phone-square primary-text" aria-hidden="true"></i>
+                          Phone number <span class="text-danger">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name=""
+                          id="phone"
+                          formControlName="phone_number"
+                          aria-describedby="helpId"
+                          placeholder=""
+                        />
+                        <span
+                          class="text-danger"
+                          *ngIf="
+                            (listingForm.controls.phone_number.touched || submitted) &&
+                            listingForm.controls.phone_number.errors?.required
+                          "
+                        >
+                          This field is required
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button (click)="showNextStep($event)" class="btn mb-3 primary-btn rounded-btn pull-right">Next <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </button>
                 <br/>
                 <br/>
@@ -291,12 +379,14 @@
 
             </ng-wizard-step>
 
-            <ng-wizard-step [title]="'Photos'">
+            <ng-wizard-step
+            [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+            [title]="'Photos'">
               <br />
               <br />
               <div *ngIf="!isSaving">
                 <h6 class="primary-text">
-                  <i class="fa fa-picture-o" aria-hidden="true"></i> Upload Photos
+                  <i class="fa fa-picture-o" aria-hidden="true"></i> Upload Photos For {{prod_name}}
                 </h6>
                 <ngx-dropzone (change)="onSelect($event)">
                   <ngx-dropzone-label

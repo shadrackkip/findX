@@ -22,6 +22,10 @@ class Listing extends Model
         'photos',
         'subscription',
         'isPaid',
+        'names',
+        'email',
+        'phone_number',
+        'photos',
         'user_id',
         'expires_at'
     ];

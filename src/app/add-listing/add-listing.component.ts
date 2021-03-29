@@ -14,6 +14,7 @@ import {
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { of } from 'rxjs';
+import { Listing } from '../models/listing.model';
 
 @Component({
   selector: 'app-add-listing',
@@ -28,6 +29,7 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   goToSection:boolean =false;
   isSaving:boolean=false;
   section:number=1;
+  prod_name:string;
   bizAddress = {
     name: '',
     url: '',
@@ -69,10 +71,13 @@ export class AddListingComponent implements OnInit, AfterViewInit {
     category_id: ['', Validators.required],
     tags: [''],
     description: [''],
-    location: ['', Validators.required],
+    location: [''],
     address: ['', Validators.required],
     zip: ['', Validators.required],
     price: ['', Validators.required],
+    names:['',Validators.required],
+    phone_number:['',Validators.required],
+    email:['',[Validators.required,Validators.email]]
   });
 
   isEditable = false;
@@ -156,7 +161,7 @@ export class AddListingComponent implements OnInit, AfterViewInit {
 
   //isValidTypeBoolean: boolean = true;p
   isValidFunctionReturnsBoolean(args: StepValidationArgs) {
-    console.log();
+    console.log(args);
 
     if (this.listingForm.valid && args.fromStep.title==='Ad Details') {
       let notifyData = {
@@ -165,14 +170,16 @@ export class AddListingComponent implements OnInit, AfterViewInit {
         message: 'Saving...🙂',
       };
       this.appService.appStatusNotification(notifyData);
-      this.step1().subscribe((resp) => {
+      this.step1().subscribe((resp:Listing) => {
         console.log(resp);
 
         let notifyData = {
           show: true,
           statusClass: 'success',
-          message: 'Saved..✔️',
+          message:`${resp.message} ✔`,
         };
+        localStorage.setItem('product_draft',JSON.stringify(resp.data))
+        this.prod_name=resp.data.title
         this.appService.appStatusNotification(notifyData);
         this.isSaving=false;
       });
@@ -180,21 +187,23 @@ export class AddListingComponent implements OnInit, AfterViewInit {
       return true;
     }
 
-    if(args.toStep.title==='Photos' && this.files.length>0){
-      alert('hhh')
+    if(args.fromStep.title==='Photos' && this.files.length>0){
+
       this.step2().subscribe((resp)=>{
         console.log(resp);
-
+        let notifyData = {
+          show: true,
+          statusClass: 'success',
+          message: 'Images uploaded ✔',
+        };
+        this.appService.appStatusNotification(notifyData);
         this.isSaving=false;
- alert(this.section)
+        return true
       })
+
     }
-
-
     //store step2 data
-
   }
-
   step1 = () => {
       this.isSaving=true;
       this.section=this.section+1;
@@ -203,7 +212,20 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   };
   step2 = () =>{
     this.isSaving=true;
-    return this.listingService.addPhotos(this.files)
+    let formData = new FormData;
+    this.files.forEach((file)=>{
+      console.log(file);
+
+      formData.append('images[]',file)
+    })
+    formData.append('product',localStorage.getItem('product_draft'))
+    let notifyData = {
+      show: true,
+      statusClass: 'info',
+      message: 'Images are being uploaded please wait...🙂',
+    };
+    this.appService.appStatusNotification(notifyData);
+    return this.listingService.addPhotos(formData)
   }
 
   isValidFunctionReturnsObservable(args: StepValidationArgs) {

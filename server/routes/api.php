@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\API\ListingController;
+use App\Http\Controllers\Api\PhotosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group( function () {
 Route::resource('listing', ListingController::class);
-
+Route::resource('photos', PhotosController::class);
 });
 
 

@@ -18,7 +18,6 @@ body{
 }
 a{
     text-decoration: none !important;
-    color: var(--primaryC) !important;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus{
     outline:none !important;
@@ -48,8 +47,6 @@ a{
     background-image: url("/assets/banner.jpg");
     background-size: cover;
 }
-
-
 .field-has-error{
   border-color: crimson !important;
 }

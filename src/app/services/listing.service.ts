@@ -40,7 +40,6 @@ export class ListingService {
     if(this.authService.getUser()){
       let user:User = JSON.parse(localStorage.getItem('activeUser'));
       const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.data.token}`
       })
       return this.httpClient.post(`${environment.apiUrl}/photos`,photos,{

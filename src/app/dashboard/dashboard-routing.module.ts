@@ -5,11 +5,13 @@ import { DashboardComponent } from './dashboard.component';
 import { AddListingComponent } from './../add-listing/add-listing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../helpers/auth.guard';
 
 const routes: Routes = [
   {
     path:'dashboard',
     component:DashboardComponent,
+    canActivate:[AuthGuard],
     children:[
       {
         path:'add-listing',

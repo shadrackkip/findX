@@ -59,6 +59,13 @@ export class AddListingComponent implements OnInit, AfterViewInit {
     },
   };
 
+  tagsInput = [];
+  limit = 5;
+  header = 'Tags'
+  placeholder = "Input tag and press enter";
+  mode = "primary";
+
+
   public Editor = ClassicEditor;
 
   constructor(
@@ -105,6 +112,9 @@ export class AddListingComponent implements OnInit, AfterViewInit {
       this.listingForm.value.negotiable = 0;
     }
   };
+  displayTags(tag) {
+    this.tagsInput = tag;
+  }
 
   ngOnInit(): void {}
   ngAfterViewInit(): void {
@@ -119,14 +129,14 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   };
 
   select_package = (type) => {
-    if(type!=='free'){
-      this.showPackages = false;
-
-    }
-
     this.subscription=type;
-
+    if(type==='premium'){
+      this.showPackages = false;
+    }else{
+      this.showNextStep()
+    }
   };
+
   hide_payment_form = () => {
     this.showPackages = true;
   };
@@ -248,6 +258,11 @@ export class AddListingComponent implements OnInit, AfterViewInit {
   step1 = () => {
       this.isSaving=true;
       this.section=this.section+1;
+      if(this.tagsInput.length>0){
+      this.listingForm.value.tags = JSON.stringify(this.tagsInput)
+      }else{
+        this.listingForm.value.tags = ''
+      }
     return this.listingService.addListing(this.listingForm.value);
 
   };

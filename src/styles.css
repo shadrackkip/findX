@@ -50,3 +50,6 @@ a{
 .field-has-error{
   border-color: crimson !important;
 }
+.input-tags{
+  padding: 2px !important;
+}

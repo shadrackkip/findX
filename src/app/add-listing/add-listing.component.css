@@ -3,7 +3,7 @@
 }
 .box-header{
     display: flex;
-  
+
     align-items: center;
 }
 .box-header>div{
@@ -15,5 +15,6 @@
 }
 .box-content-header{
     border-bottom: 1px var(--fontColorT) dotted;
-    
+
 }
+

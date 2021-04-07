@@ -35,6 +35,8 @@
     "ngx-gallery": "^5.10.0",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-owl-carousel-o": "^5.0.0",
+    "ngx-tags-input": "^2.0.1",
+    "ngx-tags-input-box": "0.0.5",
     "rxjs": "~6.6.0",
     "t-writer.js": "^1.0.4",
     "tslib": "^2.0.0",

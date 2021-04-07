@@ -32,6 +32,7 @@ import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HttpClientModule } from '@angular/common/http';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { NgxTagsModule } from 'ngx-tags-input-box';
 
 
 const ngWizardConfig: NgWizardConfig = {
@@ -62,7 +63,6 @@ const ngWizardConfig: NgWizardConfig = {
     BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
-
     NgxGalleryModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDSFTA05QFqjqJoX3lJzqqs7R2QV901qO4',
@@ -73,6 +73,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgxDropzoneModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxTagsModule,
     AppRoutingModule
   ],
   providers: [],

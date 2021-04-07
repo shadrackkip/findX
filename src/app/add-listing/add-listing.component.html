@@ -65,7 +65,7 @@
                     </label>
                     <select
                       formControlName="category_id"
-                      class="form-control"
+                      class="form-control input-lg"
                       name=""
                       id="category"
                     >
@@ -88,20 +88,12 @@
                   <div class="form-group">
                     <label for="tags">
                       <i class="fa fa-tags primary-text" aria-hidden="true"></i
-                      >Tags
+                      >
                     </label>
-                    <input
-                      type="text"
-                      formControlName="tags"
-                      class="form-control"
-                      name=""
-                      id="tags"
-                      aria-describedby="helpId"
-                      placeholder="Maximum 15, should be comma separated"
-                    />
-                    <small id="helpId" class="form-text text-muted"
-                      >Enter the tags separated by commas</small
-                    >
+
+                    <ngx-tags-input [limit]="limit" [header]="header" [placeholder]="placeholder" [mode]="'info'"
+                    (tagsChange)="displayTags($event)"></ngx-tags-input>
+
                   </div>
                 </div>
               </div>
@@ -371,7 +363,7 @@
                     </div>
                   </div>
                 </div>
-                <button (click)="showNextStep($event)" class="btn mb-3 primary-btn rounded-btn pull-right">Next <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </button>
+                <button type="button" (click)="showNextStep($event)" class="btn mb-3 primary-btn rounded-btn pull-right">Next <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </button>
                 <br/>
                 <br/>
                 <br/>
@@ -483,7 +475,7 @@
                       </div>
                       <div class="card-footer text-muted">
                         <button
-                          (click)="select_package('free')"
+                          (click)="select_package('premium')"
                           class="btn btn-primary text-white"
                         >
                           Select Package
@@ -499,8 +491,10 @@
               </div>
 
               <div *ngIf="!showPackages">
+
                 <div class="card">
                   <div class="card-body">
+                    <button (click)="hide_payment_form()" class="btn btn-sm btn-light"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                     <h5 class="card-title">Pay With M-Pesa</h5>
 
                     <form>
@@ -533,10 +527,7 @@
 
 
               </div>
-              <button (click)="showNextStep($event)" class="btn mb-3 primary-btn rounded-btn pull-right">Next <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </button>
-              <br/>
-              <br/>
-              <br/>
+
             </ng-wizard-step>
             <ng-wizard-step [title]="'Finish'">
               <h3>Finish Publishing</h3>
